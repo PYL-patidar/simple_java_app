@@ -1,15 +1,12 @@
-# Base image of java
-FROM openjdk:28-ea-oraclelinux9
+FROM openjdk:26-rc-jdk
 
-# workdir 
 WORKDIR /app
 
-# copy code to workdir
-COPY src /app
+COPY . .
 
-# compile code
-RUN javac Main.java
+RUN javac src/Main.java
 
-# Run the application
-CMD ["java", "Main"]
+EXPOSE 8000
 
+CMD ["java", "-cp", "src", "Main"]
+ 
